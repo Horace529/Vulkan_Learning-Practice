@@ -15,8 +15,36 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="cpp\log.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="cpp\main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="cpp\parameterLoader.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderor.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="config">
+      <Filter>资源文件</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Renderor.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cpp\config.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cpp\log.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cpp\parameterLoader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

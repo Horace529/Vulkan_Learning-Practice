@@ -1,0 +1,7 @@
+# --- 日志通知等级配置 ---
+# --- 从低到高：trace info warning error critical ---
+ConsoleLogLevel=info
+FileLogLevel=trace
+# --- 窗口配置 (为你后续做准备) ---
+WindowWidth=1280
+WindowHeight=720
