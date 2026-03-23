@@ -24,7 +24,7 @@
     <ClCompile Include="cpp\parameterLoader.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Renderor.cpp">
+    <ClCompile Include="cpp\Renderor.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
@@ -34,9 +34,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Renderor.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="cpp\config.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -44,6 +41,9 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="cpp\parameterLoader.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="cpp\Renderor.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

@@ -22,7 +22,7 @@
     <ClCompile Include="cpp\log.cpp" />
     <ClCompile Include="cpp\main.cpp" />
     <ClCompile Include="cpp\parameterLoader.cpp" />
-    <ClCompile Include="Renderor.cpp" />
+    <ClCompile Include="cpp\Renderor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="config" />
@@ -31,7 +31,7 @@
     <ClInclude Include="cpp\config.h" />
     <ClInclude Include="cpp\log.h" />
     <ClInclude Include="cpp\parameterLoader.h" />
-    <ClInclude Include="Renderor.h" />
+    <ClInclude Include="cpp\Renderor.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
