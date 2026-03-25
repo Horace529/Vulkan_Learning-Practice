@@ -12,7 +12,7 @@
 #include "log.h"
 
 // Initialize logger, use global configuration variables
-void Log::Init() {
+void InitLogger() {
     try {
         // ensure logs directory exists
         std::filesystem::create_directories("logs");
@@ -38,8 +38,10 @@ void Log::Init() {
         spdlog::register_logger(async_logger);
         spdlog::set_default_logger(async_logger);
 
-        // global level
-        spdlog::set_level(spdlog::level::trace);
+        // global level: choose the most verbose of the two sinks so all messages
+        // that either sink accepts will be passed through the logger.
+        auto baseLevel = std::min(g_ConsoleLogLevel, g_FileLogLevel);
+        spdlog::set_level(baseLevel);
 
         // periodically flush every 3 seconds
         spdlog::flush_every(std::chrono::seconds(3));
@@ -53,6 +55,8 @@ void Log::Init() {
     }
 }
 
-void Log::Shutdown() {
-    spdlog::shutdown();
+void Log(spdlog::level::level_enum level, const std::string& text) {
+    if (!spdlog::default_logger()) return;
+    // Use logger pattern to include timestamp; just forward the message.
+    spdlog::log(level, "{}", text);
 }

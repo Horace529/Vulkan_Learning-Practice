@@ -21,7 +21,7 @@ uint32_t HEIGHT = 600;
 int main() {
     // Suppose you read config file and modify global variables here
     applyConfig();
-    Log::Init();
+    InitLogger();
 
     Renderor app;
 
@@ -34,7 +34,9 @@ int main() {
     }
 
     // ensure logs are flushed and async threads stopped
-    Log::Shutdown();
+    // optional explicit shutdown; spdlog will also shutdown at program exit
+    // Log::Shutdown();
+    spdlog::shutdown();
 
     return EXIT_SUCCESS;
 }

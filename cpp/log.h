@@ -1,47 +1,17 @@
 #pragma once
 
 #include <spdlog/spdlog.h>
-#include <utility>
+#include <string>
 
-// Lightweight wrapper class around spdlog. All methods are static so callers
-// can call Log::Init() / Log::Debug(...) etc. without instantiating.
-class Log {
-public:
-    // initialize logging (implemented in log.cpp)
-    static void Init();
-    static void Shutdown();
+// Minimal logging API for the application.
+// - InitLogger() reads config (via extern globals) and creates an async logger
+//   according to the configured levels. It registers atexit shutdown so the
+//   async thread is stopped automatically.
+// - LogMessage(level, text) writes a single log entry with the specified
+//   priority and text. Timestamp is included via the logger pattern.
 
-   // No changes made to the methods
+void InitLogger();
 
-    static bool ShouldLog(spdlog::level::level_enum level) { return spdlog::should_log(level); }
+// level: spdlog level; text: log message (no formatting).
+void Log(spdlog::level::level_enum level, const std::string& text);
 
-    template<typename... Args>
-    static inline void Trace(const char* fmt, Args&&... args) {
-        if (spdlog::should_log(spdlog::level::trace)) spdlog::trace(fmt, std::forward<Args>(args)...);
-    }
-
-    template<typename... Args>
-    static inline void Debug(const char* fmt, Args&&... args) {
-        if (spdlog::should_log(spdlog::level::debug)) spdlog::debug(fmt, std::forward<Args>(args)...);
-    }
-
-    template<typename... Args>
-    static inline void Info(const char* fmt, Args&&... args) {
-        if (spdlog::should_log(spdlog::level::info)) spdlog::info(fmt, std::forward<Args>(args)...);
-    }
-
-    template<typename... Args>
-    static inline void Warn(const char* fmt, Args&&... args) {
-        if (spdlog::should_log(spdlog::level::warn)) spdlog::warn(fmt, std::forward<Args>(args)...);
-    }
-
-    template<typename... Args>
-    static inline void Error(const char* fmt, Args&&... args) {
-        if (spdlog::should_log(spdlog::level::err)) spdlog::error(fmt, std::forward<Args>(args)...);
-    }
-
-    template<typename... Args>
-    static inline void Critical(const char* fmt, Args&&... args) {
-        if (spdlog::should_log(spdlog::level::critical)) spdlog::critical(fmt, std::forward<Args>(args)...);
-    }
-};

@@ -34,8 +34,12 @@ void Renderor::mainLoop() {
         // drawFrame(); // 如果你有帧渲染函数，放在这里
 
         // 示例：按需单次调用日志接口（不要把 spdlog 直接写进渲染器）
-         Log::Debug("Running main loop. WIDTH={} HEIGHT={}", WIDTH, HEIGHT);
-
+        Log(spdlog::level::debug, "Running main loop");
+        Log(spdlog::level::trace, "Running main loop");
+        Log(spdlog::level::info, "Running main loop");
+        Log(spdlog::level::warn, "Running main loop");
+        Log(spdlog::level::err, "Running main loop");
+		Sleep(1000);
         // 如果需要周期性日志，请在外部模块安排调用，而不是在此处硬编码。
     }
 }
